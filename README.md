@@ -1,1 +1,3 @@
-# ProjetJava
+ProjetJava
+
+Here comes the technical infos
