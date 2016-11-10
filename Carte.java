@@ -1,8 +1,8 @@
 /**
- * Cette classe permet à l'utilisateur d'entrer la cellule qu'il souhaite attaquer
- * et de faire en sorte que celle-ci soit validée. 
+ * Cette classe permet Å• l'utilisateur d'entrer la cellule qu'il souhaite attaquer
+ * et de faire en sorte que celle-ci soit validÃ©e. 
  * 
- * @author Jonathan Noël, Armand Tsameza, Pierre Tshiama.
+ * @author Jonathan NoÃ«l, Armand Tsameza, Pierre Tshiama.
  * @version 0.1 - 2016
  */
 
@@ -20,7 +20,7 @@ public class Carte {
 		Carte cart = new Carte(test);
 		cart.affichage();
 	}
-	
+	//Methode qui permert d'afficher la carte
     public void affichage(){
     	for(int i=0 ; i < carte.length ; i++ ){
             for(int j=0 ; j < carte[0].length ; j++ ){
