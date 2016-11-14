@@ -9,38 +9,22 @@
 package Goodwin;
 
 public class Carte {
-	int carte [][];
 	
+	int carte [][]; // Taille de la carte
+	int manche = 0; // Manche actuelle dans la partie
+	String bateau [] = new String [] {"F4", "F5", "F6"}; // Creation de coordonées d'un bateau (TEST)
+	ArrayList<String> cellulesTouchantes = new ArrayList<String>(); // Tableau qui contient les cellules jouees au fur et a mesure
+
 	public Carte(int[][] carte){
 		this.carte = carte;
 	}
+
+	/**
+	 * Cette methode permet d'afficher la carte
+	 **/
+	public void affichage(){
+	}
 	
 	public static void main(String[] args) {
-		int test [][] = new int [10][10];
-		Carte cart = new Carte(test);
-		cart.affichage();
 	}
-	//Methode qui permert d'afficher la carte
-    public void affichage(){
-    	for(int i=0 ; i < carte.length ; i++ ){
-            for(int j=0 ; j < carte[0].length ; j++ ){
-                this.carte[i][j] = 0;
-            }
-    	}
-    		System.out.println("\tA \tB \tC \tD \tE \tF \tG \tH \tI \tJ");
-        	System.out.println();
-        for(int i=0 ; i < carte.length ; i++ ){
-            System.out.print((i+1)+"");
-            for(int j=0 ; j < carte[0].length ; j++ ){
-                switch(carte[i][j]){
-	                case(0):System.out.print("\t"+"~");break;
-	                case(1): System.out.print("\t"+"*");break;
-	                case(2):System.out.print("\t"+"X");break;
-                }
-                
-            }
-            System.out.println();
-        }
-
-    }
 }
