@@ -1,4 +1,4 @@
-package batailleNavale1711;
+package controller;
 
 /**
  * Cette classe permet a l'utilisateur d'entrer la cellule qu'il souhaite attaquer
@@ -26,7 +26,7 @@ public class InterractionsUtilisateur {
      * Constructeur sans parametres de la classe.
      */
     public InterractionsUtilisateur(){
-    	System.out.println("Veuillez insérer une cellule dans la console");
+    	System.out.println("Veuillez insÃ©rer une cellule dans la console");
     	demandeCellule();
     }
     
