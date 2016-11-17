@@ -1,4 +1,4 @@
-package batailleNavale1711;
+package controller;
 
 import static org.junit.Assert.*;
 
