@@ -29,10 +29,10 @@ public class Jeu {
 		CarteView carteView = new CarteView();
 		CarteController carteController = new CarteController(carteModel,carteView);
 		joueurController.updateView();
-		for(int i = 3; i > 0; i--){
+		/** for(int i = 3; i > 0; i--){
 			System.out.println("le jeu va commencer dans : " + i);
 			Thread.sleep(1000);
-		}
+		} **/
 		carteModel.setUser(joueurModel.getName());
 		carteController.updateView();
 		
@@ -45,24 +45,47 @@ public class Jeu {
 			iuController.updateView(3);
 			input = Integer.parseInt(reader.next());
 			while(input != 1 && input != 2){
-				System.out.println("veillez introduire 1 ou 2");
+				System.out.println("Veuillez introduire 1 ou 2");
 				input = Integer.parseInt(reader.next());
 			}
+			
 			if(input == 1){
 				iuController.updateView(0);
 				iuController.demandeCellule();
-				b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], true, 3);
-				carteController.drawBateau(b);
-				input = 0;
-			}
-			if(input == 2){
-				iuController.updateView(0);
-				iuController.demandeCellule();
 				b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
-				carteController.drawBateau(b);
+				
+				int k = 0;
+				while(k == 0){
+					try{
+						carteController.drawBateau(b);
+						k++;
+					} catch (ArrayIndexOutOfBoundsException e){
+						iuController.demandeCellule();
+						b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
+					}
+				}
+				
 				input = 0;
 			}
 			
+			if(input == 2){
+				iuController.updateView(0);
+				iuController.demandeCellule();
+				b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], true, 3);
+				
+				int l = 0;
+				while(l == 0){
+					try{
+						carteController.drawBateau(b);
+						l++;
+					} catch (ArrayIndexOutOfBoundsException e){
+						iuController.demandeCellule();
+						b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
+					}
+				}
+				
+				input = 0;
+			}			
 		}
 		while(true){
 			iuController.updateView(1);
@@ -75,10 +98,4 @@ public class Jeu {
       Joueur joueur1 = new Joueur();
       return joueur1;
    }
-		
-		//Bateau b = new Bateau("a",2,false,3);
-		//System.out.println(b.getPosition()[0].getX());
-		//c.drawBateau(b);
-		/*
-		}*/
 }

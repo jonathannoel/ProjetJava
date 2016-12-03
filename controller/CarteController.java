@@ -57,20 +57,41 @@ public class CarteController extends Carte{
      * this method draws a boat
      * @param b : boat to be drawn
      */
-	public void drawBateau(Bateau b){
-		int i = 0;
-		while(i < b.getT()){
-			if(b.isHorizontal()){
-				getCarte(2)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1]=3;
-			}
-			else{
-				getCarte(2)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1]=3;
-			}
-			i++;
-		}
-		updateView();
+	public void drawBateau(Bateau b) throws ArrayIndexOutOfBoundsException{
+		int i = 0, j = 0;
 		
+		try{
+			while(j < b.getT()){
+				if(b.isHorizontal()){
+					if(getCarte(2)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] == 0){
+						getCarte(2)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] = 0;
+					} else { throw new ArrayIndexOutOfBoundsException(); }
+				}
+				else{
+					if(getCarte(2)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] == 0){
+						getCarte(2)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] = 0;
+					} else { throw new ArrayIndexOutOfBoundsException(); }
+				}
+				j++;
+			}
+			
+			while(i < b.getT()){
+				if(b.isHorizontal()){				
+					getCarte(2)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1] = 3;
+				}
+				else{
+					getCarte(2)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1] = 3;
+				}
+				i++;
+			}
+			updateView();
+			
+		} catch(ArrayIndexOutOfBoundsException e){
+			System.out.println("Vous avez choisi une case hors carte, veuillez réessayer");
+		}		
 	}
+	
+		
 	public void updateView(){
 		view.afficherCarte(getCarte(1), getCarte(2), getUser());
 	}

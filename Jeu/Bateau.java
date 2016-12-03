@@ -1,21 +1,5 @@
 package Jeu;
-/*
-public class Bateau {
-	private int[] position;
-	private boolean isHorizontal;
-	public Bateau(int[] position){
-		this.position = position;
-	}
-	public int[] getPosition() {
-		return position;
-	}
-	public void setPosition(int[] position) {
-		this.position = position;
-	}
-	
-	
-}
-*/
+
 import java.util.Arrays;
 
 /**
