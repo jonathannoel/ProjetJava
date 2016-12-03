@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.ParagraphAction;
 
 /**
  * Cette classe permet à l'utilisateur d'entrer la cellule qu'il souhaite attaquer

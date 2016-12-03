@@ -1,6 +1,8 @@
 package controller;
 
-import Jeu.Bateau;
+import java.util.Random;
+
+import model.Bateau;
 import model.Carte;
 import view.CarteView;
 
@@ -43,6 +45,27 @@ public class CarteController extends Carte{
 	public void setUser(String user) {
 		this.model.setUser(user);
 	}
+	
+	/**
+	 * This method allows the computer to shoot at a random spot on the map
+	 */
+	public void randomTir(){
+		Random rand = new Random();
+		int x = getCelluleAttaqueX();
+		int y = getCelluleAttaqueY();
+		x = rand.nextInt((10 - 1) + 1) + 1;
+		y = rand.nextInt((10 - 1) + 1) + 1;
+		while(getCarte(2)[x-1][y-1] == 1 || getCarte(2)[x-1][y-1] == 2) {
+			x = rand.nextInt((10 - 1) + 1) + 1;
+			y = rand.nextInt((10 - 1) + 1) + 1;
+		}
+		setCelluleAttaqueX(x);
+		setCelluleAttaqueY(y);
+		if(getCarte(2)[x-1][y-1] == 3){
+	    	getCarte(2)[x-1][y-1] = 2;}
+	    	else{getCarte(2)[x-1][y-1] = 1;}
+	}
+	
 	/**
 	 * this method allows the player to shoot an opponent's boat
 	 * @param position :position in which the player wishes to shoot
@@ -91,6 +114,25 @@ public class CarteController extends Carte{
 		}		
 	}
 	
+	public void showAdversaireAttaque(){
+		System.out.println("Vous avez été attaqué à la case : " + toStr(getCelluleAttaqueY()) + "" + getCelluleAttaqueX());
+	}
+	
+	public String toStr(int s){
+		switch(s){
+			case(1) : return "A";
+			case(2) : return "B";
+			case(3) : return "C";
+			case(4) : return "D";
+			case(5) : return "E";
+			case(6) : return "F";
+			case(7) : return "G";
+			case(8) : return "H";
+			case(9) : return "I";
+			case(10) : return "J";
+		}
+		return "";
+	}
 		
 	public void updateView(){
 		view.afficherCarte(getCarte(1), getCarte(2), getUser());

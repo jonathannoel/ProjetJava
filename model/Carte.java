@@ -1,6 +1,6 @@
 package model;
 
-import Jeu.Bateau;
+import model.Bateau;
 
 /**
  * This class creates the map of the game
@@ -11,6 +11,7 @@ public class Carte {
 	private int [][]carte1;
 	private int [][]carte2;
 	private String user;
+	int celluleAttaqueX,celluleAttaqueY;
 	public Carte(){
 		this.carte1 = new int[10][10];
 		this.carte2 = new int[10][10];
@@ -47,6 +48,19 @@ public class Carte {
 			case(1): this.carte1 = carte;
 			case(2): this.carte2 = carte;
 		}
+	}    
+	
+	public int getCelluleAttaqueX() {
+		return celluleAttaqueX;
+	}
+	public void setCelluleAttaqueX(int celluleAttaqueX) {
+		this.celluleAttaqueX = celluleAttaqueX;
+	}
+	public int getCelluleAttaqueY() {
+		return celluleAttaqueY;
+	}
+	public void setCelluleAttaqueY(int celluleAttaqueY) {
+		this.celluleAttaqueY = celluleAttaqueY;
 	}    
 	
     

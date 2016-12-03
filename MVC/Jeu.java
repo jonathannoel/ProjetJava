@@ -2,7 +2,7 @@ package MVC;
 
 import java.util.Scanner;
 
-import Jeu.Bateau;
+import model.Bateau;
 import controller.CarteController;
 import controller.InteractionController;
 import controller.JoueurController;
@@ -16,6 +16,7 @@ import view.JoueurView;
 public class Jeu {
 	public static void main(String[] args) throws InterruptedException {
 		Scanner reader = new Scanner(System.in);
+		Bateau[] bateaux;
 		int input = 0;
 		/*----------USER-----------*/
 		//fetch student record based on his roll no from the database
@@ -92,6 +93,9 @@ public class Jeu {
 			iuController.demandeCellule();
 			carteController.tir(iuController.getIntCaseIntroduite());
 			carteController.updateView();
+			carteController.randomTir();
+			carteController.updateView();
+			carteController.showAdversaireAttaque();
 		}
 	}
    private static Joueur retriveJoueurFromDatabase(){
