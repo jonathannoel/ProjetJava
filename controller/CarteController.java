@@ -9,6 +9,7 @@ import view.CarteView;
 public class CarteController extends Carte{
 	private Carte model;
 	private CarteView view;
+	public boolean ok = false;
 	public CarteController(Carte model, CarteView view){
 		this.model = model;
 		this.view = view;
@@ -46,6 +47,21 @@ public class CarteController extends Carte{
 		this.model.setUser(user);
 	}
 	
+	/**
+	 * @return the nok
+	 */
+	public boolean isOk() {
+		return ok;
+	}
+	
+	/**
+	 * @param ok the ok to set
+	 */
+	public void setOk(boolean ok) {
+		this.ok = ok;
+	}
+
+
 	/**
 	 * This method allows the computer to shoot at a random spot on the map
 	 */
@@ -107,6 +123,7 @@ public class CarteController extends Carte{
 				}
 				i++;
 			}
+			ok = true;
 			updateView();
 			
 		} catch(ArrayIndexOutOfBoundsException e){

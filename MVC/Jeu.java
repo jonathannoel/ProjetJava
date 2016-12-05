@@ -18,6 +18,7 @@ public class Jeu {
 		Scanner reader = new Scanner(System.in);
 		Bateau[] bateaux;
 		int input = 0;
+		
 		/*----------USER-----------*/
 		//fetch student record based on his roll no from the database
 		Joueur joueurModel  = retriveJoueurFromDatabase();
@@ -41,13 +42,19 @@ public class Jeu {
 		InteractionsUtilisateur iuModel = new InteractionsUtilisateur();
 		InteractionView iuView = new InteractionView();
 		InteractionController iuController = new InteractionController(iuModel, iuView);
-		for (int i = 0; i < 3; i++) {
+
+		int i = 0;
+		do {
 			Bateau b;
 			iuController.updateView(3);
-			input = Integer.parseInt(reader.next());
-			while(input != 1 && input != 2){
-				System.out.println("Veuillez introduire 1 ou 2");
-				input = Integer.parseInt(reader.next());
+
+			try {
+				while(input != 1 && input != 2){
+					System.out.println("Veuillez introduire 1 ou 2");
+					input = Integer.parseInt(reader.next());
+				}
+			} catch (NumberFormatException e){
+				System.out.println("Votre réponse n'est pas valable");
 			}
 			
 			if(input == 1){
@@ -55,16 +62,12 @@ public class Jeu {
 				iuController.demandeCellule();
 				b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
 				
-				int k = 0;
-				while(k == 0){
-					try{
-						carteController.drawBateau(b);
-						k++;
-					} catch (ArrayIndexOutOfBoundsException e){
-						iuController.demandeCellule();
-						b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
-					}
+				carteController.drawBateau(b);
+				
+				if(carteController.isOk()){
+					i++;
 				}
+				carteController.setOk(false);
 				
 				input = 0;
 			}
@@ -74,20 +77,18 @@ public class Jeu {
 				iuController.demandeCellule();
 				b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], true, 3);
 				
-				int l = 0;
-				while(l == 0){
-					try{
-						carteController.drawBateau(b);
-						l++;
-					} catch (ArrayIndexOutOfBoundsException e){
-						iuController.demandeCellule();
-						b = new Bateau(iuController.getIntCaseIntroduite()[0], iuController.getIntCaseIntroduite()[1], false, 3);
-					}
+				carteController.drawBateau(b);
+				
+				if(carteController.isOk()){
+					i++;
 				}
+				
+				carteController.setOk(false);
 				
 				input = 0;
 			}			
-		}
+		} while (i < 3);
+		
 		while(true){
 			iuController.updateView(1);
 			iuController.demandeCellule();
