@@ -127,12 +127,42 @@ public class CarteController extends Carte{
 			updateView();
 			
 		} catch(ArrayIndexOutOfBoundsException e){
-			System.out.println("Vous avez choisi une case hors carte, veuillez réessayer");
+			System.out.println("Vous avez choisi une case hors carte, veuillez rÃ©essayer");
 		}		
 	}
-	
+	public void drawBateauA(Bateau b) throws ArrayIndexOutOfBoundsException{
+		int i = 0, j = 0;
+		
+		try{
+			while(j < b.getT()){
+				if(b.isHorizontal()){
+					if(getCarte(1)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] == 0){
+						getCarte(1)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] = 0;
+					} else { throw new ArrayIndexOutOfBoundsException(); }
+				}
+				else{
+					if(getCarte(1)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] == 0){
+						getCarte(1)[(b.getTaille()[j].getX())-1][(b.getTaille()[j].getY())-1] = 0;
+					} else { throw new ArrayIndexOutOfBoundsException(); }
+				}
+				j++;
+			}
+			
+			while(i < b.getT()){
+				if(b.isHorizontal()){				
+					getCarte(1)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1] = 3;
+				}
+				else{
+					getCarte(1)[(b.getTaille()[i].getX())-1][(b.getTaille()[i].getY())-1] = 3;
+				}
+				i++;
+			}
+			ok = true;			
+		} catch(ArrayIndexOutOfBoundsException e){
+		}		
+	}
 	public void showAdversaireAttaque(){
-		System.out.println("Vous avez été attaqué à la case : " + toStr(getCelluleAttaqueY()) + "" + getCelluleAttaqueX());
+		System.out.println("Vous avez Ã©tÃ© attaquÃ© Ã  la case : " + toStr(getCelluleAttaqueY()) + "" + getCelluleAttaqueX());
 	}
 	
 	public String toStr(int s){
@@ -154,6 +184,5 @@ public class CarteController extends Carte{
 	public void updateView(){
 		view.afficherCarte(getCarte(1), getCarte(2), getUser());
 	}
-	
 	
 }
