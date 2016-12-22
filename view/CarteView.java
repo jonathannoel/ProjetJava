@@ -3,7 +3,6 @@ package view;
 import model.Carte;
 
 public class CarteView extends Carte{
-
 	public void afficherCarte(int[][] carte1, int[][] carte2, String user ){
 		int count = 0;
 		char a = 'A';
@@ -21,6 +20,7 @@ public class CarteView extends Carte{
 	                case(0):System.out.print("\t"+"~");break;
 	                case(1): System.out.print("\t"+"*");break;
 	                case(2):System.out.print("\t"+"X");break;
+	                case(3):System.out.print("\t" + "~");break;
                 }
             }
             System.out.println();
