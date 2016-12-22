@@ -1,16 +1,14 @@
 package model;
 
-import model.Bateau;
-
 /**
  * This class creates the map of the game
- * @author Pierre Tshiama
+ * @author Pierre Tshiama  2TL2 group 14
  *
  */
 public class Carte {
 	private int [][]carte1;
 	private int [][]carte2;
-	private String user;
+	private String user1, user2;
 	int celluleAttaqueX,celluleAttaqueY;
 	public Carte(){
 		this.carte1 = new int[10][10];
@@ -22,15 +20,27 @@ public class Carte {
             }
     	}
 	}
-	public String getUser(){
-		return user;
+	
+	public String getUser1() {
+		return user1;
 	}
-	public void setUser(String s) {
-		this.user = s;
+
+	public void setUser1(String user1) {
+		this.user1 = user1;
 	}
+
+	public String getUser2() {
+		return user2;
+	}
+
+	public void setUser2(String user2) {
+		this.user2 = user2;
+	}
+
 	/**
-	 * this method returns the opponent's map
-	 * @return the opponent's map carte1
+	 * this method returns a map
+	 * @param numCarte if 1, returns the opponent's map. If 2, returns the player's map.
+	 * @return returns a map
 	 */
     public int[][] getCarte(int numCarte) {
 		switch(numCarte){
@@ -39,17 +49,17 @@ public class Carte {
 			default: return carte2;
 		}
 	}
-    /**
-     * this method sets the oppononent's map to an updated map
-     * @param carte1 : the updated map that will be set to old opponent's map 
-     */
+	/**
+	 * this method sets a map to an updated map
+	 * @param carte updated map
+	 * @param numCarte number of the map to be updated
+	 */
 	public void setCarte(int[][] carte, int numCarte) {
 		switch(numCarte){
 			case(1): this.carte1 = carte;
 			case(2): this.carte2 = carte;
 		}
-	}    
-	
+	}
 	public int getCelluleAttaqueX() {
 		return celluleAttaqueX;
 	}
