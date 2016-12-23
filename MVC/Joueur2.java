@@ -26,7 +26,9 @@ import model.Zodiac;
 import view.CarteView;
 import view.InteractionView;
 import view.JoueurView;
-
+/**
+ * Classe qui permet d'executer le jeu en tant que deuxieme joueur
+ */
 public class Joueur2 {
 	public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
 		Socket socket = new Socket();
@@ -47,14 +49,13 @@ public class Joueur2 {
 		int [] bateauACoule = new int [4];
 		int [] serverAttaque = new int[2];
 		int [] userAttaque = new int[2];
-		/*----------USER-----------*/
-		//Create new user
+		/*----------Utilisateur-----------*/
 		Joueur joueurModel  = new Joueur();
 		//Create a view : to write student details on console
 		JoueurView joueurView = new JoueurView();
 		JoueurController joueurController = new JoueurController(joueurModel, joueurView);
 		
-		/*--------- MAP -------*/
+		/*--------- Carte -------*/
 		Carte carteModel = new Carte();
 		CarteView carteView = new CarteView();
 		CarteController carteController = new CarteController(carteModel,carteView);
@@ -65,6 +66,8 @@ public class Joueur2 {
 		InteractionsUtilisateur iuModel = new InteractionsUtilisateur();
 		InteractionView iuView = new InteractionView();
 		InteractionController iuController = new InteractionController(iuModel, iuView);
+		
+		/*-------- Demande pour jouer en ligne ---------*/
 		try {
 			while(input != 1 && input != 2){
 				iuController.updateView(4);
@@ -93,6 +96,11 @@ public class Joueur2 {
 			carteModel.setUser2(j2);
 			
 		}
+		
+		/*---------------------------------------------------------------*/
+		
+		/*------------- Introduction des bateaux de l'utilisateur----------------*/
+		
 		input = 0;
 		carteController.updateView();
 		System.out.println("Vous allez maintenant introduire vos bateaux.");
@@ -221,6 +229,9 @@ public class Joueur2 {
 					break;		
 			}
 		}while(i<bU.length);
+		
+		/*---------------------------------------------------*/
+		/*-------------Introduction des bateaux de l'adversaire(En ligne)-------------*/
 		if(isMultiplayer == true){
 			userCarte = new ObjectOutputStream(socket.getOutputStream());
 			serverCarte = new ObjectInputStream(socket.getInputStream());
@@ -230,6 +241,7 @@ public class Joueur2 {
 				carteController.drawBateauA(bA[j], j+3);
 			}
 		}
+		/*-------------Introduction des bateaux de l'adversaire(local)-------------*/
 		else{
 			carteModel.setUser2("Adversaire");
 			i = 0;
@@ -257,6 +269,7 @@ public class Joueur2 {
 		}
 		carteController.updateView();
 		/*--------------------------------------------*/
+		/*----------------Debut du jeu----------------*/
 		while(gameOver == false){
 			System.out.println("En attente de l'adversaire");
 			serverAttaque = (int[]) serverCarte.readObject();
@@ -305,7 +318,14 @@ public class Joueur2 {
 			
 		}
 		reader.close();
+		/*-------------------------------------*/
 	}
+	/**
+	 * Cette methode retourne un nombre aleatoire entre le parametre min et le parametre max
+	 * @param min
+	 * @param max
+	 * @return un nombre aleatoire entre min et max
+	 */
 	private static int randomNum(int min, int max){
 		Random rand = new Random();
 		return rand.nextInt(((max - min) + 1) + min);
