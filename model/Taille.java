@@ -1,13 +1,15 @@
 package model;
 
+import java.io.Serializable;
+
 /**
 *
-* @author  Armand 
+* @author TSAMEZA Armand MARCEL 2tl2 groupe 14 
 */
-public class Taille {
-   private int x;
-   private int y;
-   private int etat= 0;
+public class Taille implements Serializable{
+   private int x;             // sens orizontale du bateau
+   private int y;            //sens verticale du bateau
+   private int etat= 0;		
        /*          */
    public Taille(int x, int y) {
        this.x=x;

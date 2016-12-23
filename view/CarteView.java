@@ -3,11 +3,10 @@ package view;
 import model.Carte;
 
 public class CarteView extends Carte{
-
-	public void afficherCarte(int[][] carte1, int[][] carte2, String user ){
+	public void afficherCarte(int[][] carte1, int[][] carte2, String user1, String user2 ){
 		int count = 0;
 		char a = 'A';
-		System.out.println("Adversaire : \n");
+		System.out.println("\nAdversaire : "+user2+"\n");
 		while(count<carte1.length){
 			System.out.print("\t"+ a);
 			a++;
@@ -21,11 +20,15 @@ public class CarteView extends Carte{
 	                case(0):System.out.print("\t"+"~");break;
 	                case(1): System.out.print("\t"+"*");break;
 	                case(2):System.out.print("\t"+"X");break;
+	                case(3):System.out.print("\t" + "B");break;
+	                case(4):System.out.print("\t" + "B");break;
+	                case(5):System.out.print("\t" + "B");break;
+	                case(6):System.out.print("\t" + "B");break;
                 }
             }
             System.out.println();
         }
-        System.out.println("\n"+user+"\n");
+        System.out.println("\n"+user1+"\n");
         a = 'A';
         count = 0;
         while(count<carte1.length){
@@ -42,6 +45,9 @@ public class CarteView extends Carte{
 	                case(1): System.out.print("\t"+"*");break;
 	                case(2):System.out.print("\t"+"X");break;
 	                case(3):System.out.print("\t" + "B");break;
+	                case(4):System.out.print("\t" + "B");break;
+	                case(5):System.out.print("\t" + "B");break;
+	                case(6):System.out.print("\t" + "B");break;
                 }
                 
             }

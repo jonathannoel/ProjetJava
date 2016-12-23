@@ -10,15 +10,6 @@ import org.junit.Test;
 import controller.InteractionController;
 import view.InteractionView;
 
-/**
- * Cette classe permet de tester la classe InterractionsUtilisateur.
- * 
- * @author Jonathan Noel, Armand Tsameza, Pierre Tshiama.
- * @version 0.1 - 2016
- * 
- * @author Noel Jonathan
- */
-
 public class InteractionsUtilisateurTest {
 
 	/**

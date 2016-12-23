@@ -12,10 +12,13 @@ public class InteractionView extends InteractionsUtilisateur {
 				System.out.println("Quelle cellule voulez-vous attaquer ?");
 				break;
 			case(2) : 
-				System.out.println("Veuillez introduire une lettre(A-F), puis un chiffre(1-10)");
+				System.out.println("Veuillez introduire une lettre(A-J), puis un chiffre(1-10)");
 				break;
 			case(3) : 
 				System.out.println("Tapez 1 pour un bateau horizontal, 2 pour un vertical");
+			break;
+			case(4) : 
+				System.out.println("Tapez 1 pour jouer en ligne, 2 pour jouer contre l'ordinateur");
 			break;
 		}
 	}
