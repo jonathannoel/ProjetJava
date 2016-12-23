@@ -3,6 +3,10 @@ package view;
 import model.InteractionsUtilisateur;
 
 public class InteractionView extends InteractionsUtilisateur {
+	/**
+	 * Cette classe permet d'afficher une instruction
+	 * @param i
+	 */
 	public void afficherInstruction(int i){
 		switch(i){
 			case(0) : 

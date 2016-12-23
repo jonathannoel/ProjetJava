@@ -5,40 +5,25 @@ import java.util.Arrays;
 import java.util.Observable;
 
 /**
- * Cette classe permet de gérer les insertions utilisateur.
- * 
- * @author Jonathan Noel, Armand Tsameza, Pierre Tshiama.
- * @version 2016
- * 
- */
-
+*
+* @author  TSAMEZA ARMAND MARCEL GROUPE 14 2tl2
+*/
 public class Bateau extends Observable implements Serializable {
-   
-	/**
-	 * Instanciation des variables.
-	 */
-	private boolean horizontal = true;
-	private Taille[] taille;   // appel de la classe Taille pour former un tableau de position
-	private int t;
-	
-	/**
-	* Constructeur de la classe. 
-	* @param x	constitue le parametre horizontale du bateau.
-	* @param y	constitue le parametre verticale du bateau du bateau.
-	* @param taille constitue la taille du bateau.
-	* @param horizontal
-	*/
-	public  Bateau(int x, int y, boolean horizontal, int taille ){
+   private boolean horizontal = true;
+   private Taille[] taille;   // appel de la classe Taille pour former un tableau de position
+   private int t;
+   //Creates a new instance of Bateau 
+   public  Bateau(int x, int y, boolean horizontal, int taille ){
        this.horizontal = horizontal;
        longueur(x, y, taille);
    }
    
    /**
     * cette methode permet de savoir si un bateau a 
-    * une longueur verticale ou une longueur orizontale.
-    * @param x	constitue le parametre horizontale du bateau.
-    * @param y	constitue le parametre verticale du bateau du bateau.
-    * @param taille constitue la taille du bateau.
+    * une longueur verticale ou une longueur orizontale
+    * @param x	constitue le parametre horizontale du bateau
+    * @param y	constitue le parametre verticale du bateau du bateau
+    * @param taille constitue la taille du bateau
     */
    public void longueur(int x, int y, int taille){
 	   this.taille = new Taille [taille];
@@ -61,10 +46,10 @@ public class Bateau extends Observable implements Serializable {
    
    /**
     * cette methode permet de tester si un bateau est 
-    * attaqué ou pas  
-    * @param px	constitue le parametre horizontale du bateau.
-    * @param py	constitue le parametre verticale du bateau.
-    * @return par incrémentation le nombre de cout a chaque que la la case est est touche .
+    * ataqué ou pas  
+    * @param px	constitue le parametre horizontale du bateau
+    * @param py	constitue le parametre verticale du bateau
+    * @return par inccrémentation le nombre de cout a chaque que la la case est est touche 
     */
    public  int estTouche(int px, int py){
        int caseTouche = 0; int nbreCout = 0;
@@ -86,32 +71,26 @@ public class Bateau extends Observable implements Serializable {
    }
  
     /**
-     * Cette méthode retourne horizontal.
      * @return the horizontal
      */
     public boolean isHorizontal() {
         return horizontal;
     }
-    
     /**
-     * Cette méthode met à jour horizontal.
-     * @param horizontal
+     * @param horizontal the horizontal to set
      */
     public void setHorizontal(boolean horizontal) {
         this.horizontal = horizontal;
         setChanged();
         notifyObservers();
     }
-    
     /**
-     * @return position
+     * @return the position
      */
     public Taille[] getPosition() {
         return this.taille;
     }
-    
     /**
-     * Cette méthode modifie la position courante.
      * @param position the position to set
      */
     public void setPosition(Taille[] taille) {
@@ -120,31 +99,40 @@ public class Bateau extends Observable implements Serializable {
         notifyObservers();
     }
     
-    /**
-     * Cette méthode retourne la taille.
-     * @return taille.
-     */
     public Taille[] getTaille() {
 		return taille;
 	}
-    
-    /**
-     * Cette méthode modifie la taille.
-     * @param taille
-     */
 	public void setTaille(Taille[] taille) {
 		this.taille = taille;
 		setChanged();
         notifyObservers();
 	}
-	
 	public int getT() {
 		return t;
 	}
-	
 	public void setT(int t) {
 		this.t = t;
 		setChanged();
         notifyObservers();
-	}    
+	}
+	/* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Bateau [horizontal=" + horizontal + ", Taille=" + Arrays.toString(taille) + "]";
+    }
+    
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Bateau b = new Bateau(1, 0, false, 5);
+        Bateau a = new Bateau(1, 0, true, 4);
+        Bateau c = new Bateau(1, 0, false, 3);
+        Bateau d = new Bateau(1, 0, true, 2);
+        System.out.println(b);
+        System.out.println(a);
+        System.out.println(c);
+        System.out.println(d);
+    }
+    
  }

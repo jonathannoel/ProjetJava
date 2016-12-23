@@ -9,8 +9,12 @@ import model.Bateau;
 
 public class Fregate extends Bateau {
 	
-	  /** Creates a new instance of Frigate */
-	
+	/**
+	 * Constructeur de Fragate avec en parametre une position X, une position Y et un boolean pour verifier si le bateau est horizontal
+	 * @param x
+	 * @param y
+	 * @param horizontal
+	 */
   public Fregate(int x, int y, boolean horizontal) {
       super(x,y,horizontal,3);
   }
@@ -18,8 +22,4 @@ public class Fregate extends Bateau {
       return "Fregates"+super.toString();
   }
   
-  public static void main(String[] args) {
-  	Fregate d = new Fregate(1, 0, true);
-  	System.out.println(d);
-  }
 }

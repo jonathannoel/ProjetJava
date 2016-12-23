@@ -9,17 +9,20 @@ import model.Bateau;
 
 public class PorteAvion extends Bateau {
 	
-	  /** Creates a new instance of PorteAvion */
-	
+	/**
+	 * Constructeur de PorteAvion avec en parametre une position X, une position Y et un boolean pour verifier si le bateau est horizontal
+	 * @param x
+	 * @param y
+	 * @param horizontal
+	 */
   public PorteAvion(int x, int y, boolean horizontal) {
       super(x,y,horizontal,5);
   }
+  /**
+   * Cette methode permet d'afficher le Bateau sous forme de texte
+   */
   public String toString(){
       return "porteAvion"+super.toString();
   }
   
-  public static void main(String[] args) {
-  	PorteAvion d = new PorteAvion(1, 0, true);
-  	System.out.println(d);
-  }
 }

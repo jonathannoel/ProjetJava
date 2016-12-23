@@ -1,7 +1,4 @@
 package model;
-
-import java.util.ArrayList;
-
 /**
  * Cette classe permet à l'utilisateur d'entrer la cellule qu'il souhaite attaquer
  * et de faire en sorte que celle-ci soit validée. 
@@ -9,6 +6,9 @@ import java.util.ArrayList;
  * @author Jonathan Noel, Armand Tsameza, Pierre Tshiama.
  * @version 0.1 - 2016
  */
+
+
+import java.util.ArrayList;
 
 public class InteractionsUtilisateur {
 	
