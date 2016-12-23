@@ -3,6 +3,13 @@ package view;
 import model.Carte;
 
 public class CarteView extends Carte{
+	/**
+	 * Cette methode permet d'afficher la carte1 et carte2 avec leur nom respectifs user1 et user2
+	 * @param carte1
+	 * @param carte2
+	 * @param user1
+	 * @param user2
+	 */
 	public void afficherCarte(int[][] carte1, int[][] carte2, String user1, String user2 ){
 		int count = 0;
 		char a = 'A';

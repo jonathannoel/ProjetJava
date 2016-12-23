@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import org.hamcrest.core.Is;
 
 import controller.CarteController;
 import controller.InteractionController;
