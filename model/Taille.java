@@ -7,39 +7,45 @@ import java.io.Serializable;
 * @author TSAMEZA Armand MARCEL 2tl2 groupe 14 
 */
 public class Taille implements Serializable{
-   private int x;             // sens orizontale du bateau
-   private int y;            //sens verticale du bateau
+   private int x;             // Position sur l'axe X
+   private int y;            //Position sur l'axe Y
    private int etat= 0;		
-       /*          */
+   /**
+    * Constructeur de Taille prenant en parametre une position x et une positon y
+    * @param x
+    * @param y
+    */
    public Taille(int x, int y) {
        this.x=x;
        this.y=y;
    }
 
-   /*                           */
-    /**
-     * @return the x
+    /**Cette methode renvoi la position X
+     * @return x 
      */
     public int getX() {
         return x;
     }
 
     /**
-     * @param x the x to set
+     * Cette methode met à jour la variable d'instance X
+     * @param x
      */
     public void setX(char x) {
         this.x = x;
     }
 
     /**
-     * @return the y
+     * Cette methode renvoi la position Y
+     * @return y
      */
     public int getY() {
         return y;
     }
 
     /**
-     * @param y the y to set
+     * Cette methode met à jour la variable d'instance Y
+     * @param y
      */
     public void setY(int y) {
         this.y = y;
