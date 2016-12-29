@@ -10,7 +10,7 @@ public class InteractionView extends InteractionsUtilisateur {
 	public void afficherInstruction(int i){
 		switch(i){
 			case(0) : 
-				System.out.println("Où voulez-vous mettre votre bateau ?");
+				System.out.println("OÃ¹ voulez-vous mettre votre bateau ?");
 				break;
 			case(1) : 
 				System.out.println("Quelle cellule voulez-vous attaquer ?");
