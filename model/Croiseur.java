@@ -1,25 +1,25 @@
 package model;
 
-import model.Bateau;
-
 /**
- * Cette classe permet de définir un Croiseur.
- * 
- * @author Jonathan Noel, Armand Tsameza, Pierre Tshiama.
- * @version 2016
- * 
- */
+*
+* @author  TSAMEZA ARMAND MARCEL GROUPE 14 2tl2
+*/
+
+import model.Bateau;
 
 public class Croiseur extends Bateau {
     
-	/**
-	 * Constructeur de la classe.
-	 * @param x
-	 * @param y
-	 * @param horizontal
-	 */
+    /** Creates a new instance of Croiseur */
 	
     public Croiseur(int x, int y, boolean horizontal) {
         super(x,y,horizontal,4);
+    }
+    public String toString(){
+        return "croiseur"+super.toString();
+    }
+    
+    public static void main(String[] args) {
+    	Croiseur d = new Croiseur(1, 0, true);
+    	System.out.println(d);
     }
 }

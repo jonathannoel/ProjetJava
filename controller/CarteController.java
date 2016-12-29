@@ -8,27 +8,10 @@ import model.Bateau;
 import model.Carte;
 import view.CarteView;
 
-/**
- * Cette classe permet de mettre les données de la carte à jour.
- * 
- * @author Jonathan Noel, Armand Tsameza, Pierre Tshiama.
- * @version 0.1 - 2016
- */
-
 public class CarteController extends Carte{
-	
-	/**
-	 * Instanciation des variables.
-	 */
 	private Carte model;
 	private CarteView view;
 	public boolean ok = false;
-	
-	/**
-	 * Constructeur avec deux paramètres.
-	 * @param model
-	 * @param view
-	 */
 	public CarteController(Carte model, CarteView view){
 		this.model = model;
 		this.view = view;
@@ -36,8 +19,8 @@ public class CarteController extends Carte{
 	
 	
 	/**
-	 * Cette méthode retourne la carte du rival.
-	 * @return La carte du rival : carte1 ou carte2 la carte du joueur courant.
+	 * this method returns the opponent's map
+	 * @return the opponent's map carte1
 	 */
     public int[][] getCarte(int numCarte) {
 		switch(numCarte){
@@ -46,11 +29,9 @@ public class CarteController extends Carte{
 			default: return model.getCarte(2);
 		}
 	}
-    
     /**
-     * Cette méthode permet de mettre à jour la carte carte.
-     * @param carte1 : La carte à jour du rival ou 
-     * carte2 la carte à jour du joueur courant.
+     * this method sets the oppononent's map to an updated map
+     * @param carte1 : the updated map that will be set to old opponent's map 
      */
 	public void setCarte(int[][] carte, int numCarte) {
 		switch(numCarte){
@@ -59,36 +40,24 @@ public class CarteController extends Carte{
 		}
 	}   
 	
-	/**
-	 * Cette méthode retourne le joueur courant.
-	 */
 	public String getUser1() {
 		return this.model.getUser1();
 	}
 
-	/**
-	 * Cette méthode modifie le nom du joueur courant.
-	 */
+
 	public void setUser1(String user) {
 		this.model.setUser1(user);
 	}
-	
-	/**
-	 * Cette méthode retourne le joueur courant.
-	 */
 	public String getUser2() {
 		return this.model.getUser2();
 	}
 
-	/**
-	 * Cette méthode modifie le nom du joueur courant.
-	 */
+
 	public void setUser2(String user) {
 		this.model.setUser2(user);
 	}
 	
 	/**
-	 * Cette méthode retourne ok.
 	 * @return the nok
 	 */
 	public boolean isOk() {
@@ -96,8 +65,7 @@ public class CarteController extends Carte{
 	}
 	
 	/**
-	 * Cette méthode met ok à jour.
-	 * @param ok : ok à définir.
+	 * @param ok the ok to set
 	 */
 	public void setOk(boolean ok) {
 		this.ok = ok;
@@ -105,7 +73,7 @@ public class CarteController extends Carte{
 
 
 	/**
-	 * Cette méthode permet à l'ordinateur de tirer sur une case aléatoire.
+	 * This method allows the computer to shoot at a random spot on the map
 	 */
 	public void randomTir(){
 		Random rand = new Random();
@@ -125,8 +93,8 @@ public class CarteController extends Carte{
 	}
 	
 	/**
-	 * Cette méthode permet au joueur de tirer sur un bateau ennemi. 
-	 * @param position : La position sur laquelle le joueur veut tirer.
+	 * this method allows the player to shoot an opponent's boat
+	 * @param position :position in which the player wishes to shoot
 	 */
 	public void tir(int[] position, int numCarte){
     	if(getCarte(numCarte)[position[0]-1][position[1]-1] == 3 ||getCarte(numCarte)[position[0]-1][position[1]-1] == 4||
@@ -142,8 +110,8 @@ public class CarteController extends Carte{
     }
 	
 	/**
-	 * Cette méthode permet au joueur de tirer sur un bateau ennemi.(Version GUI) 
-	 * @param position : La position sur laquelle le joueur veut tirer.
+	 * this method allows the player to shoot an opponent's boat
+	 * @param position :position in which the player wishes to shoot
 	 */
 	public void tirGui(int[] position, JButton btn){
     	if(getCarte(1)[position[0]-1][position[1]-1] == 3){
@@ -154,8 +122,8 @@ public class CarteController extends Carte{
     	}
     }
 	/**
-     * Cette méthode dessine un bateau sur la carte.
-     * @param b : le bateau à dessiner.
+     * this method draws a boat
+     * @param b : boat to be drawn
      */
 	public void drawBateau(Bateau b, int bateauId) throws ArrayIndexOutOfBoundsException{
 		int i = 0, j = 0;
@@ -191,13 +159,6 @@ public class CarteController extends Carte{
 			System.out.println("Vous avez choisi une case hors carte, veuillez réessayer");
 		}		
 	}
-	
-	/**
-	 * Cette méthode permet de dessiner les bateaux de l'adversaire.
-	 * @param b : Le bateau à dessiner.
-	 * @param bateauId : l'id du bateau.
-	 * @throws ArrayIndexOutOfBoundsException
-	 */
 	public void drawBateauA(Bateau b, int bateauId) throws ArrayIndexOutOfBoundsException{
 		int i = 0, j = 0;
 		
@@ -229,13 +190,6 @@ public class CarteController extends Carte{
 		} catch(ArrayIndexOutOfBoundsException e){
 		}		
 	}
-	
-	/**
-	 * Cette méthode retourne si un bateau est coulé.
-	 * @param bateauId : l'id du bateau.
-	 * @param numCarte : la carte sur laquelle le bateau se trouve.
-	 * @return true si le bateau est coulé, false sinon.
-	 */
 	public boolean estCoule(int bateauId, int numCarte){
 		for (int i = 0; i < getCarte(numCarte).length; i++) {
 			for (int j = 0; j < getCarte(numCarte)[0].length; j++) {
@@ -246,19 +200,10 @@ public class CarteController extends Carte{
 		}
 		return true;
 	}
-	
-	/**
-	 * Cette méthode affiche l'attaque de l'ordinateur.
-	 */
 	public void showAdversaireAttaque(){
 		System.out.println("Vous avez été attaqué à la case : " + toStr(getCelluleAttaqueY()) + "" + getCelluleAttaqueX());
 	}
 	
-	/**
-	 * Cette méthode permet de convertir les numéros en lettres.
-	 * @param s : le numéro à convertir.
-	 * @return la lettre associée au numéro s.
-	 */
 	public String toStr(int s){
 		switch(s){
 			case(1) : return "A";
@@ -275,9 +220,6 @@ public class CarteController extends Carte{
 		return "";
 	}
 		
-	/**
-	 * Cette méthode permet de mettre à jour la carte.
-	 */
 	public void updateView(){
 		view.afficherCarte(getCarte(1), getCarte(2), getUser1(), getUser2());
 	}
